@@ -9,15 +9,9 @@ export default function Section({ id, children }: SectionProps) {
     return (
         <section
             id={id}
-            style={{
-                minHeight: "100vh",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "0 24px",
-            }}
+            className="min-h-screen flex items-center justify-center px-6"
         >
-            <div style={{ width: "100%", maxWidth: "960px" }}>
+            <div className="w-full max-w-5xl mx-auto">
                 {children}
             </div>
         </section>
