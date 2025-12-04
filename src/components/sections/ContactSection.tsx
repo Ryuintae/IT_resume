@@ -39,10 +39,16 @@ export default function ContactSection() {
                         </a>
                     </p>
                 </div>
-
-                <p className="text-xs md:text-sm text-neutral-500 dark:text-neutral-400">
-                    새로운 지도 서비스와 도시 데이터를 다루는 프로젝트에서
-                    함께 문제를 정의하고 해결하는 일을 좋아합니다.
+                <p className="text-[11px] text-neutral-400 dark:text-neutral-500 mt-4">
+                    3D voxel dog ©{" "}
+                    <a
+                        href="https://www.craftz.dog/"
+                        target="_blank"
+                        className="underline underline-offset-2 hover:text-neutral-600 dark:hover:text-neutral-300 transition"
+                    >
+                        Takuya Matsuyama
+                    </a>
+                    {" "}
                 </p>
             </div>
         </Section>
