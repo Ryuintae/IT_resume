@@ -3,23 +3,19 @@ import { useCallback, useEffect, useState } from "react";
 type HeaderProps = {
     isDark: boolean;
     onToggleDark: () => void;
-    isLargeText: boolean;
-    onToggleTextSize: () => void;
 };
 
 const navItems = [
     { id: "hero", label: "Home" },
     { id: "intro", label: "About" },
     { id: "projects", label: "Projects" },
+    { id: "tech", label: "Skills" },
+    { id: "patents", label: "Modules" },
+    { id: "education", label: "Education" },
     { id: "contact", label: "Contact" },
 ];
 
-export default function Header({
-                                   isDark,
-                                   onToggleDark,
-                                   isLargeText,
-                                   onToggleTextSize,
-                               }: HeaderProps) {
+export default function Header({ isDark, onToggleDark }: HeaderProps) {
     const [activeId, setActiveId] = useState<string>("hero");
 
     const handleScroll = useCallback((id: string) => {
@@ -67,18 +63,25 @@ export default function Header({
                     backdrop-blur-md
                 "
             >
-                <div className="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+                <div className="max-w-5xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-4">
                     {/* 왼쪽 로고 */}
-                    <div className="text-sm md:text-base font-semibold tracking-tight">
-                        <span className="text-neutral-900 dark:text-neutral-50">
-                            RyuIntae
-                        </span>{" "}
-                        <span className="text-neutral-500 dark:text-neutral-400">
-                            포트폴리오
-                        </span>
-                    </div>
+                    <button
+                        type="button"
+                        onClick={() => handleScroll("hero")}
+                        className="text-left bg-transparent border-0 p-0 hover:opacity-90 focus:outline-none"
+                    >
+                        <div className="text-sm md:text-base font-semibold tracking-tight">
+                            <span className="text-neutral-900 dark:text-neutral-50">
+                                RyuIntae
+                            </span>{" "}
+                            <span className="text-neutral-500 dark:text-neutral-400">
+                                Portfolio
+                            </span>
+                        </div>
+                    </button>
 
-                    <nav className="hidden md:flex items-center gap-6 text-xs md:text-sm">
+                    {/* 가운데 네비게이션 (데스크톱) */}
+                    <nav className="hidden md:flex items-center gap-5 text-xs md:text-sm">
                         {navItems.map((item) => (
                             <button
                                 key={item.id}
@@ -90,7 +93,7 @@ export default function Header({
                                     ${
                                     activeId === item.id
                                         ? "text-neutral-900 dark:text-blue-300"
-                                        : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-200 dark:hover:text-blue-300"
+                                        : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-blue-300"
                                 }
                                 `}
                             >
@@ -99,29 +102,17 @@ export default function Header({
                         ))}
                     </nav>
 
-                    {/* 오른쪽 컨트롤: 글자 크기 / 다크모드 */}
+                    {/* 오른쪽: 다크 모드 토글만 */}
                     <div className="flex items-center gap-2">
                         <button
                             type="button"
                             className={`
-                                ${pillButtonBase}
-                                border-neutral-200 bg-neutral-50 text-neutral-600
-                                hover:bg-neutral-100 hover:text-neutral-900
-                                dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700
-                            `}
-                            onClick={onToggleTextSize}
-                        >
-                            {isLargeText ? "글자 작게" : "글자 크게"}
-                        </button>
-
-                        <button
-                            type="button"
-                            className={`
-                                ${pillButtonBase}
-                                border-neutral-200 bg-neutral-50 text-neutral-600
-                                hover:bg-neutral-100 hover:text-neutral-900
-                                dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700
-                            `}
+        ${pillButtonBase}
+        border-neutral-200 bg-neutral-50 text-neutral-600
+        hover:bg-neutral-100 hover:text-neutral-900
+        dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700
+        whitespace-nowrap
+    `}
                             onClick={onToggleDark}
                         >
                             {isDark ? "라이트 모드" : "다크 모드"}
@@ -134,7 +125,8 @@ export default function Header({
             <nav
                 className="
                     fixed right-4 top-1/2 -translate-y-1/2
-                    flex flex-col items-center gap-3
+                    hidden md:flex
+                    flex-col items-center gap-3
                     z-50
                 "
             >
