@@ -1,4 +1,4 @@
-import { Mail, Github } from "lucide-react";
+import { Mail, Github, Globe } from "lucide-react";
 
 export default function ContactSection() {
     return (
@@ -6,13 +6,13 @@ export default function ContactSection() {
             <footer
                 id="contact"
                 className="
-                    relative
-                    left-1/2 right-1/2
-                    -ml-[50vw] -mr-[50vw]
-                    w-screen
-                    border-t border-neutral-200/80 dark:border-neutral-800/80
-                    bg-neutral-100/80 dark:bg-neutral-900/80
-                "
+          relative
+          left-1/2 right-1/2
+          -ml-[50vw] -mr-[50vw]
+          w-screen
+          border-t border-neutral-200/80 dark:border-neutral-800/80
+          bg-neutral-100/80 dark:bg-neutral-900/80
+        "
             >
                 <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-6 md:space-y-7">
                     {/* 상단 인사 / 설명 */}
@@ -85,32 +85,56 @@ export default function ContactSection() {
                                 Contact
                             </h4>
                             <ul className="space-y-2 text-neutral-700 dark:text-neutral-200">
+                                {/* Email */}
                                 <li>
                                     <a
                                         href="mailto:dlsxichlrg@naver.com"
-                                        className="inline-flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                        className="flex items-start gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                                     >
-                                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-200">
-                                            <Mail className="h-3.5 w-3.5" />
-                                        </span>
-                                        <span className="text-sm md:text-base">
-                                            dlsxichlrg@naver.com
-                                        </span>
+                    <span className="w-8 flex-none">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-200">
+                        <Mail className="h-3.5 w-3.5" />
+                      </span>
+                    </span>
+                                        <span className="text-sm md:text-base leading-8">
+                      dlsxichlrg@naver.com
+                    </span>
                                     </a>
                                 </li>
+                                {/* Tistory */}
+                                <li>
+                                    <a
+                                        href="https://dlsxo.tistory.com/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="flex items-start gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                    >
+                    <span className="w-8 flex-none">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-200">
+                        <Globe className="h-3.5 w-3.5" />
+                      </span>
+                    </span>
+                                        <span className="text-sm md:text-base leading-8">
+                      dlsxo.tistory.com
+                    </span>
+                                    </a>
+                                </li>
+                                {/* GitHub */}
                                 <li>
                                     <a
                                         href="https://github.com/Ryuintae"
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="inline-flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                        className="flex items-start gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                                     >
-                                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-neutral-50 dark:bg-neutral-100 dark:text-neutral-900">
-                                            <Github className="h-3.5 w-3.5" />
-                                        </span>
-                                        <span className="text-sm md:text-base">
-                                            github.com/Ryuintae
-                                        </span>
+                    <span className="w-8 flex-none">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-neutral-50 dark:bg-neutral-100 dark:text-neutral-900">
+                        <Github className="h-3.5 w-3.5" />
+                      </span>
+                    </span>
+                                        <span className="text-sm md:text-base leading-8">
+                      github.com/Ryuintae
+                    </span>
                                     </a>
                                 </li>
                             </ul>
