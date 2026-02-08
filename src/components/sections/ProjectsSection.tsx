@@ -171,6 +171,29 @@ export default function ProjectsSection() {
                                             );
                                         })}
                                     </div>
+                                    {/* Links */}
+                                    {project.links?.length ? (
+                                        <div className="pt-3 flex flex-wrap gap-2">
+                                            {project.links.map((l) => (
+                                                <a
+                                                    key={l.href}
+                                                    href={l.href}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="
+                                                     inline-flex items-center gap-2 rounded-full
+                                                     px-3 py-1 text-[11px] md:text-xs font-medium
+                                                     border border-neutral-200/70 bg-white/60
+                                                     text-neutral-700 hover:bg-white
+                                                     dark:border-neutral-800/70 dark:bg-neutral-950/40 dark:text-neutral-200
+                                                     "
+                                                >
+                                                    {l.label}
+                                                    <span className="opacity-60">↗</span>
+                                                </a>
+                                            ))}
+                                        </div>
+                                    ) : null}
                                 </div>
                             </div>
                         </motion.article>
