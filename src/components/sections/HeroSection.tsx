@@ -94,7 +94,7 @@ export default function HeroSection() {
                         {/* 이력서 다운로드 BTN */}
                         <div className="mt-28 pt-2 flex justify-center md:justify-start">
                             <a
-                                href="/files/RIT_resume.pdf"
+                                href="/files/류인태_이력서.pdf"
                                 download
                                 className="
         inline-flex items-center gap-2
