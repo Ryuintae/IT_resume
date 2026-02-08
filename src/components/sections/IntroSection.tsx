@@ -56,20 +56,26 @@ export default function IntroSection() {
                             <strong className="font-semibold text-neutral-900 dark:text-neutral-100">
                                 JBT
                             </strong>
-                            에서 근무하며, Cesium · QGIS · GeoServer 등 공간정보 스택을 연계한
-                            웹 기반 시각화 서비스를 구현해 온 프론트엔드 개발자입니다.
+                            에서 프론트엔드 개발자로 근무하며,
+                            웹 기반 시각화 서비스의 화면 개발과 운영을 맡아왔습니다.
                         </p>
 
                         <p className="break-keep text-balance">
-                            Cesium 기반 3D 시각화 기능을 직접 구현하고 연구과제 프로젝트에
-                            참여하면서, 복잡한 공간정보를 어떻게 보여주어야 사용자가 부담
-                            없이 이해할 수 있을지에 대해 꾸준히 고민해 왔습니다.
+                            복잡한 기능과 데이터를 다루는 환경에서
+                            화면 구조와 사용자 흐름을 우선으로 두고 개발해 왔습니다.
                         </p>
 
                         <p className="break-keep text-balance">
-                            문제 해결 중심의 태도와 협업 역량을 바탕으로, 안정적인 서비스
-                            품질과 개발 효율을 함께 추구하는 프론트엔드 개발을 지향합니다.
+                            유지보수와 협업을 고려해
+                            공통 컴포넌트와 코드 흐름을 정리하며 작업해 왔습니다.
                         </p>
+
+                        <p className="break-keep text-balance">
+                            팀 내에서 프론트엔드 개발을 담당하며
+                            화면 구현과 협업을 함께 진행했습니다.
+                        </p>
+
+
                     </div>
                 </div>
             </motion.div>

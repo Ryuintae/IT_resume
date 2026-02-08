@@ -83,10 +83,13 @@ export default function HeroSection() {
                         </h1>
 
                         <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed break-keep text-balance">
-                            여러 기능과 데이터를 하나의 흐름으로 정리해, 복잡한 정보도 자연스럽게 이해할 수 있는 UI로 만드는 일을 합니다.
+                            React·TypeScript를 기반으로
+                            대용량 데이터 시각화, 서비스 공통 UI, 지도 기반 웹 서비스를 개발해 왔습니다.
                         </p>
+
                         <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed break-keep text-balance">
-                            프로젝트마다 화면 구조·시각화·성능 개선을 중심으로 사용자 경험을 높이는 데 집중해 왔습니다.
+                            또한 DB 설계와 Spring Security 기반 인증 기능을 직접 구현한 경험이 있어,
+                            프론트엔드와 백엔드의 경계를 이해하고 자연스럽게 협업할 수 있습니다.
                         </p>
                         {/* 이력서 다운로드 BTN */}
                         <div className="mt-28 pt-2 flex justify-center md:justify-start">
