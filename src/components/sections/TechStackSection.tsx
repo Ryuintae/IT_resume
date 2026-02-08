@@ -10,7 +10,7 @@ const stacks = [
         items: [
             "JavaScript",
             "TypeScript",
-            "React.js",
+            "React 19",
             "MobX",
             "Storybook",
             "HTML",

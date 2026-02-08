@@ -38,9 +38,9 @@ function App() {
             <main className="pt-16">
                 <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
                     <HeroSection />
+                    <TechStackSection />
                     <IntroSection />
                     <ProjectsSection />
-                    <TechStackSection />
                     <PatentSection />
                     <EducationSection />
                 </div>

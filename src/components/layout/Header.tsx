@@ -7,9 +7,9 @@ type HeaderProps = {
 
 const navItems = [
     { id: "hero", label: "Home" },
+    { id: "tech", label: "Skills" },
     { id: "intro", label: "About" },
     { id: "projects", label: "Projects" },
-    { id: "tech", label: "Skills" },
     { id: "patents", label: "Modules" },
     { id: "education", label: "Education" },
     { id: "contact", label: "Contact" },
