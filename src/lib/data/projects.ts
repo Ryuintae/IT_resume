@@ -81,5 +81,12 @@ export const projects: Project[] = [
             },
         ],
         techStack: "JavaScript · Cesium · GeoServer · PostgreSQL",
+        links: [
+            {
+                label: "시연 영상",
+                kind: "video",
+                videoSrc: "/videos/flood-demo.mp4",
+            },
+        ],
     },
 ];

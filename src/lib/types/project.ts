@@ -6,8 +6,14 @@ export interface ProjectPoint {
 
 export interface ProjectLink {
     label: string;
-    href: string;
+    // 일반 링크일 때
+    href?: string;
+    // 모달 트리거일 때
+    kind?: "url" | "video";
+    videoSrc?: string;
+    videoPoster?: string;
 }
+
 export interface Project {
     id: string;
     title: string;
