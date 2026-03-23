@@ -8,15 +8,18 @@ const stacks = [
         icon: "</>",
         description: "직관적인 UI와 사용자 경험 중심의 웹 화면을 구현합니다.",
         items: [
-            "JavaScript",
             "TypeScript",
+            "JavaScript",
             "React 19",
+            "Next.js",
+            "React Query",
+            "Zustand",
             "MobX",
-            "Storybook",
+            "Tailwind CSS",
             "HTML",
             "CSS",
-            "Tailwind CSS",
             "Vite",
+            "Storybook",
             "Framer Motion"
         ]
     },
@@ -25,17 +28,26 @@ const stacks = [
         label: "Back-End / Infra",
         icon: "{}",
         description: "서비스 운영을 위한 API와 배포 환경을 구축하고 관리합니다.",
-        items: ["Spring (Java)", "GeoServer", "Git", "Vercel Deploy"]
+        items: [
+            "Java",
+            "Spring",
+            "Docker",
+            "Git",
+            "Vercel Deploy",
+            "GeoServer"
+        ]
     },
     {
         id: "db",
         label: "Database",
         icon: "DB",
         description: "데이터를 효율적인 저장·조회 구조를 설계합니다.",
-        items: ["PostgreSQL", "MySQL"]
+        items: [
+            "PostgreSQL",
+            "MySQL"
+        ]
     }
 ];
-
 
 
 const containerVariants = {
