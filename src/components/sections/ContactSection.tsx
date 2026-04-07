@@ -54,6 +54,14 @@ export default function ContactSection() {
                                 </li>
                                 <li>
                                     <a
+                                        href="#side-projects"
+                                        className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                    >
+                                        사이드 프로젝트
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
                                         href="#tech"
                                         className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                                     >
@@ -81,7 +89,7 @@ export default function ContactSection() {
 
                         {/* Contact */}
                         <div className="space-y-3 md:min-w-[240px]">
-                            <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">
+                        <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">
                                 Contact
                             </h4>
                             <ul className="space-y-2 text-neutral-700 dark:text-neutral-200">

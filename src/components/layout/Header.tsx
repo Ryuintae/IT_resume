@@ -10,6 +10,7 @@ const navItems = [
     { id: "tech", label: "Skills" },
     { id: "intro", label: "About" },
     { id: "projects", label: "Projects" },
+    { id: "side-projects", label: "Side Projects" },
     { id: "patents", label: "Modules" },
     { id: "education", label: "Education" },
     { id: "contact", label: "Contact" },
