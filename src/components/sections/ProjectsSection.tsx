@@ -3,6 +3,23 @@ import { projects } from "../../lib/data/projects";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+import { FaReact, FaJava } from "react-icons/fa";
+import {
+    SiTypescript,
+    SiJavascript,
+    SiSpring,
+    SiStorybook,
+    SiMobx,
+    SiPostgresql,
+    SiCesium,
+    SiJquery
+} from "react-icons/si";
+import { MdSecurity } from "react-icons/md";
+
+
+import jspIcon from "../../assets/jsp.svg";
+import { MdPublic } from "react-icons/md"; // 🌍 Earth 아이콘
+
 const containerVariants = {
     hidden: {},
     show: {
@@ -16,6 +33,7 @@ const cardVariants = {
     hidden: { opacity: 0, y: 24 },
     show: { opacity: 1, y: 0 },
 };
+
 type VideoModalState = {
     open: boolean;
     title?: string;
@@ -23,6 +41,72 @@ type VideoModalState = {
     poster?: string;
     isPublic?: boolean;
 };
+
+type TechMeta =
+    | {
+    type: "icon";
+    icon: React.ComponentType<{ className?: string }>;
+    color: string;
+    label: string;
+}
+    | {
+    type: "image";
+    src: string;
+    label: string;
+}
+    | {
+    type: "text";
+    label: string;
+};
+
+function getTechMeta(tech: string): TechMeta {
+    const normalized = tech.trim().toLowerCase();
+
+    switch (normalized) {
+        case "react":
+            return { type: "icon", icon: FaReact, color: "text-sky-500", label: "React" };
+
+        case "typescript":
+            return { type: "icon", icon: SiTypescript, color: "text-blue-600", label: "TypeScript" };
+
+        case "javascript":
+            return { type: "icon", icon: SiJavascript, color: "text-yellow-500", label: "JavaScript" };
+
+        case "mobx":
+            return { type: "icon", icon: SiMobx, color: "text-orange-500", label: "MobX" };
+
+        case "storybook":
+            return { type: "icon", icon: SiStorybook, color: "text-pink-500", label: "Storybook" };
+
+        case "java":
+            return { type: "icon", icon: FaJava, color: "text-red-500", label: "Java" };
+
+        case "spring":
+            return { type: "icon", icon: SiSpring, color: "text-green-600", label: "Spring" };
+
+        case "postgresql":
+            return { type: "icon", icon: SiPostgresql, color: "text-blue-700", label: "PostgreSQL" };
+
+        case "cesium":
+            return { type: "icon", icon: SiCesium, color: "text-sky-600", label: "Cesium" };
+
+        case "jquery":
+            return { type: "icon", icon: SiJquery, color: "text-blue-500", label: "jQuery" };
+
+        case "geoserver":
+            return { type: "icon", icon: MdPublic, color: "text-emerald-500", label: "GeoServer" };
+
+        case "jsp":
+            return { type: "image", src: jspIcon, label: "JSP" };
+
+        case "security":
+        case "spring security":
+            return { type: "icon", icon: MdSecurity, color: "text-emerald-600", label: "Security" };
+
+        default:
+            return { type: "text", label: tech.trim() };
+    }
+}
 export default function ProjectsSection() {
     const [videoModal, setVideoModal] = useState<VideoModalState>({ open: false });
 
@@ -117,11 +201,13 @@ export default function ProjectsSection() {
                                                 <div className="grid gap-2.5">
                                                     {/* 문제 */}
                                                     <div className="grid grid-cols-[auto,1fr] items-start gap-x-2 gap-y-1">
-                                                         <span className="
-                                                            whitespace-nowrap
-                                                            rounded-full bg-neutral-100 px-2 py-0.5 text-[11px] font-semibold
-                                                            text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200
-                                                         ">
+                                                        <span
+                                                            className="
+                                                                whitespace-nowrap flex-shrink-0
+                                                                rounded-full bg-neutral-100 px-2 py-0.5 text-[11px] font-semibold
+                                                                text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200
+                                                            "
+                                                        >
                                                             문제
                                                         </span>
                                                         <p className="text-xs md:text-sm leading-relaxed break-keep">
@@ -131,15 +217,15 @@ export default function ProjectsSection() {
 
                                                     {/* 접근 */}
                                                     <div className="grid grid-cols-[auto,1fr] items-start gap-x-2 gap-y-1">
-                                                        <span className="
-                                                          whitespace-nowrap
-                                                          rounded-full
-                                                          bg-blue-50 px-2 py-0.5 text-[11px] font-semibold
-                                                          text-blue-700
-                                                          dark:bg-blue-950/40 dark:text-blue-200
-                                                        ">
-                                                        접근
-                                                      </span>
+                                                        <span
+                                                            className="
+                                                                whitespace-nowrap flex-shrink-0
+                                                                rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-semibold
+                                                                text-blue-700 dark:bg-blue-950/40 dark:text-blue-200
+                                                            "
+                                                        >
+                                                            접근
+                                                        </span>
                                                         <p className="text-xs md:text-sm leading-relaxed break-keep">
                                                             {p.action}
                                                         </p>
@@ -147,15 +233,15 @@ export default function ProjectsSection() {
 
                                                     {/* 결과 */}
                                                     <div className="grid grid-cols-[auto,1fr] items-start gap-x-2 gap-y-1">
-                                                      <span className="
-                                                          whitespace-nowrap
-                                                          rounded-full
-                                                          bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold
-                                                          text-emerald-700
-                                                          dark:bg-emerald-950/30 dark:text-emerald-200
-                                                      ">
-                                                        결과
-                                                      </span>
+                                                        <span
+                                                            className="
+                                                                whitespace-nowrap flex-shrink-0
+                                                                rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold
+                                                                text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-200
+                                                            "
+                                                        >
+                                                            결과
+                                                        </span>
                                                         <p className="text-xs md:text-sm leading-relaxed break-keep">
                                                             {p.result}
                                                         </p>
@@ -170,21 +256,43 @@ export default function ProjectsSection() {
                                         {project.techStack.split("·").map((raw) => {
                                             const tech = raw.trim();
                                             if (!tech) return null;
+
+                                            const meta = getTechMeta(tech);
+
                                             return (
                                                 <span
                                                     key={tech}
                                                     className="
+                                                        inline-flex items-center gap-1.5
                                                         rounded-full px-3 py-1 text-[11px] md:text-xs font-medium
                                                         bg-neutral-50/80 text-neutral-700
                                                         border border-blue-200 shadow-sm
                                                         dark:bg-neutral-900/70 dark:text-neutral-200 dark:border-blue-900/40
                                                         whitespace-nowrap
-                                                    ">
-                                                    {tech}
+                                                    "
+                                                >
+                                                    {meta.type === "icon" ? (
+                                                        <>
+                                                            <meta.icon className={`h-4 w-4 ${meta.color}`} />
+                                                            {meta.label}
+                                                        </>
+                                                    ) : meta.type === "image" ? (
+                                                        <>
+                                                            <img
+                                                                src={meta.src}
+                                                                alt={meta.label}
+                                                                className="h-4 w-4 object-contain"
+                                                            />
+                                                            {meta.label}
+                                                        </>
+                                                    ) : (
+                                                        meta.label
+                                                    )}
                                                 </span>
                                             );
                                         })}
                                     </div>
+
                                     {/* Links */}
                                     {project.links?.length ? (
                                         <div className="pt-3 flex flex-wrap gap-2">
@@ -241,6 +349,7 @@ export default function ProjectsSection() {
                     ))}
                 </motion.div>
             </div>
+
             {/* Video Modal */}
             {videoModal.open ? (
                 <div
@@ -258,12 +367,14 @@ export default function ProjectsSection() {
                     />
 
                     {/* Panel */}
-                    <div className="
+                    <div
+                        className="
                          relative w-[min(980px,94vw)] overflow-hidden rounded-3xl
                          border border-neutral-200/80 bg-white text-neutral-900
                          shadow-[0_24px_90px_rgba(15,23,42,0.18)]
                          dark:border-neutral-800/80 dark:bg-neutral-950 dark:text-neutral-100
-                     ">
+                     "
+                    >
                         {/* Top accent */}
                         <div
                             aria-hidden="true"
@@ -271,20 +382,25 @@ export default function ProjectsSection() {
                                     absolute inset-x-0 top-0 h-20
                                     bg-gradient-to-br from-blue-50 via-white to-indigo-50
                                     dark:from-blue-950/25 dark:via-neutral-950 dark:to-indigo-950/25
-                            "/>
+                            "
+                        />
 
                         {/* Header (2 rows) */}
-                        <div className="
+                        <div
+                            className="
                              relative px-5 py-4
                              border-b border-neutral-200/70 dark:border-neutral-800/70
-                        ">
+                        "
+                        >
                             {/* 1행: 제목(가운데) + 닫기(오른쪽) */}
                             <div className="relative flex items-center justify-end">
-                                <p className="
+                                <p
+                                    className="
                                     absolute left-1/2 -translate-x-1/2
                                     text-sm md:text-base font-semibold truncate
                                     max-w-[70%]
-                                 ">
+                                 "
+                                >
                                     {videoModal.title ?? "시연 영상"}
                                 </p>
 
@@ -298,7 +414,8 @@ export default function ProjectsSection() {
                                         hover:bg-white hover:shadow-sm
                                         dark:border-neutral-800 dark:bg-neutral-950/50 dark:text-neutral-100
                                         dark:hover:bg-white/10
-                                    ">
+                                    "
+                                >
                                     닫기
                                 </button>
                             </div>
@@ -310,13 +427,15 @@ export default function ProjectsSection() {
                                 </p>
 
                                 {videoModal.isPublic ? (
-                                    <span className="
+                                    <span
+                                        className="
                                         inline-flex items-center rounded-full
                                         bg-amber-50 px-2.5 py-1 text-[11px] font-semibold text-amber-800
                                         border border-amber-200/60
                                         dark:bg-amber-950/30 dark:text-amber-200 dark:border-amber-900/30
-                                    ">
-                                      공공기관 보수적 UI 톤 적용
+                                    "
+                                    >
+                                        공공기관 보수적 UI 톤 적용
                                     </span>
                                 ) : null}
                             </div>
@@ -324,11 +443,13 @@ export default function ProjectsSection() {
 
                         {/* Body */}
                         <div className="relative p-4 md:p-5 bg-white dark:bg-neutral-950">
-                            <div className="
+                            <div
+                                className="
                                     overflow-hidden rounded-2xl
                                     border border-neutral-200/70 bg-neutral-100
                                     dark:border-neutral-800/70 dark:bg-black
-                            ">
+                            "
+                            >
                                 <video
                                     key={videoModal.src}
                                     controls
@@ -338,7 +459,9 @@ export default function ProjectsSection() {
                                     poster={videoModal.poster}
                                     className="block w-full h-auto bg-black"
                                 >
-                                    {videoModal.src ? <source src={videoModal.src} type="video/mp4" /> : null}
+                                    {videoModal.src ? (
+                                        <source src={videoModal.src} type="video/mp4" />
+                                    ) : null}
                                     브라우저가 video 태그를 지원하지 않습니다.
                                 </video>
                             </div>

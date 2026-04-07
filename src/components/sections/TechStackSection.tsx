@@ -1,67 +1,101 @@
 import Section from "../ui/Section";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
+import type { IconType } from "react-icons";
 
-const stacks = [
+import { FaReact } from "react-icons/fa";
+import {
+    SiTypescript,
+    SiJavascript,
+    SiNextdotjs,
+    SiReactquery,
+    SiTailwindcss,
+    SiVite,
+    SiJquery,
+    SiStorybook,
+    SiFramer,
+    SiSpring,
+    SiDocker,
+    SiPostgresql,
+    SiMysql,
+} from "react-icons/si";
+import { MdSecurity } from "react-icons/md";
+
+import zustandIcon from "../../assets/zustand.svg";
+import jspIcon from "../../assets/jsp.svg";
+
+type StackItem =
+    | {
+    name: string;
+    iconType?: "component";
+    icon: IconType;
+    color?: string;
+}
+    | {
+    name: string;
+    iconType: "image";
+    src: string;
+};
+
+type StackGroup = {
+    id: string;
+    label: string;
+    description: string;
+    items: StackItem[];
+};
+
+const stacks: StackGroup[] = [
     {
         id: "frontend",
         label: "Front-End",
-        icon: "</>",
         description: "직관적인 UI와 사용자 경험 중심의 웹 화면을 구현합니다.",
         items: [
-            "TypeScript",
-            "JavaScript",
-            "React 19",
-            "Next.js",
-            "React Query",
-            "Zustand",
-            "MobX",
-            "Tailwind CSS",
-            "HTML",
-            "CSS",
-            "Vite",
-            "Storybook",
-            "Framer Motion"
-        ]
+            { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
+            { name: "JavaScript", icon: SiJavascript, color: "text-yellow-500" },
+            { name: "jQuery", icon: SiJquery, color: "text-blue-500" },
+            { name: "React", icon: FaReact, color: "text-sky-500" },
+            { name: "Next.js", icon: SiNextdotjs, color: "text-black dark:text-white" },
+            { name: "TanStack Query", icon: SiReactquery, color: "text-red-500" },
+            { name: "Zustand", iconType: "image", src: zustandIcon },
+            { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-500" },
+            { name: "Vite", icon: SiVite, color: "text-violet-500" },
+            { name: "Storybook", icon: SiStorybook, color: "text-pink-500" },
+            { name: "Framer Motion", icon: SiFramer, color: "text-purple-500" },
+        ],
     },
     {
         id: "backend",
         label: "Back-End / Infra",
-        icon: "{}",
         description: "서비스 운영을 위한 API와 배포 환경을 구축하고 관리합니다.",
         items: [
-            "Java",
-            "Spring",
-            "Docker",
-            "Git",
-            "Vercel Deploy",
-            "GeoServer"
-        ]
+            { name: "Spring", icon: SiSpring, color: "text-green-600" },
+            { name: "JSP", iconType: "image", src: jspIcon },
+            { name: "Security", icon: MdSecurity, color: "text-emerald-600" },
+            { name: "Docker", icon: SiDocker, color: "text-blue-500" },
+        ],
     },
     {
         id: "db",
         label: "Database",
-        icon: "DB",
         description: "데이터를 효율적인 저장·조회 구조를 설계합니다.",
         items: [
-            "PostgreSQL",
-            "MySQL"
-        ]
-    }
+            { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-700" },
+            { name: "MySQL", icon: SiMysql, color: "text-orange-500" },
+        ],
+    },
 ];
-
 
 const containerVariants = {
     hidden: {},
     show: {
         transition: {
-            staggerChildren: 0.12
-        }
-    }
+            staggerChildren: 0.12,
+        },
+    },
 };
 
 const cardVariants = {
-    hidden: {opacity: 0, y: 18},
-    show: {opacity: 1, y: 0}
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0 },
 };
 
 export default function TechStackSection() {
@@ -69,15 +103,13 @@ export default function TechStackSection() {
         <Section id="tech" className="py-16">
             <motion.div
                 className="max-w-5xl mx-auto space-y-8"
-                initial={{opacity: 0, y: 20}}
-                whileInView={{opacity: 1, y: 0}}
-                transition={{duration: 0.6}}
-                viewport={{once: true}}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
             >
-                {/* 타이틀 */}
                 <div className="space-y-3">
-                    <span
-                        className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-800 px-3 py-1 text-xs font-medium text-neutral-600 dark:text-neutral-300">
+                    <span className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-800 px-3 py-1 text-xs font-medium text-neutral-600 dark:text-neutral-300">
                         Skills
                     </span>
                     <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
@@ -88,13 +120,12 @@ export default function TechStackSection() {
                     </p>
                 </div>
 
-                {/* 스택 카드 리스트 */}
                 <motion.div
                     className="grid gap-5 md:gap-6 md:grid-cols-3"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{once: true, amount: 0.2}}
+                    viewport={{ once: true, amount: 0.2 }}
                 >
                     {stacks.map((stack) => (
                         <motion.div
@@ -108,52 +139,44 @@ export default function TechStackSection() {
                                 dark:shadow-[0_4px_14px_rgba(0,0,0,0.35)]
                                 px-5 py-6 md:px-6 md:py-7
                                 flex flex-col gap-3
-                                transition-all duration-300 hover:shadow-[0_6px_20px_rgba(15,23,42,0.12)]
-                                hover:-translate-y-0.5
                             "
                         >
-                            {/* 아이콘 + 라벨 */}
-                            <div className="flex items-center gap-2.5">
-                                <div
-                                    className="
-            flex h-8 w-8 items-center justify-center
-            rounded-xl bg-blue-50 text-blue-700
-            dark:bg-blue-900/40 dark:text-blue-200
-            border border-blue-200 dark:border-blue-700/60
-            shadow-sm text-xs font-semibold
-        "
-                                >
-                                    {stack.icon}
-                                </div>
+                            <h3 className="text-sm md:text-base font-semibold">
+                                {stack.label}
+                            </h3>
 
-                                <h3 className="text-sm md:text-base font-semibold text-neutral-900 dark:text-neutral-100">
-                                    {stack.label}
-                                </h3>
-                            </div>
+                            <p className="text-xs text-neutral-600 dark:text-neutral-300">
+                                {stack.description}
+                            </p>
 
-                            {/* 태그 */}
-                            <div
-                                className="pt-3 mt-1 border-t border-neutral-200/60 dark:border-neutral-700/60 flex flex-wrap gap-2">
-                                {stack.items.map((item) => (
-                                    <span
-                                        key={item}
-                                        className="
-        rounded-full
-        px-3 py-1 text-[11px] md:text-xs font-medium
+                            <div className="pt-3 flex flex-wrap gap-2">
+                                {stack.items.map((item) => {
+                                    const baseClass =
+                                        "flex items-center gap-1.5 px-2 py-1 rounded-lg text-[11px] md:text-xs " +
+                                        "bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700";
 
-        bg-neutral-50/80
-        text-neutral-700
-        border border-blue-200
-        shadow-sm backdrop-blur-sm
+                                    if (item.iconType === "image") {
+                                        return (
+                                            <span key={item.name} className={baseClass}>
+                                                <img
+                                                    src={item.src}
+                                                    alt={item.name}
+                                                    className="w-4 h-4 object-contain"
+                                                />
+                                                {item.name}
+                                            </span>
+                                        );
+                                    }
 
-        dark:bg-neutral-900/70
-        dark:text-neutral-200
-        dark:border-blue-900/40
-    "
-                                    >
-    {item}
-</span>
-                                ))}
+                                    const Icon = item.icon;
+
+                                    return (
+                                        <span key={item.name} className={baseClass}>
+                                            <Icon className={`w-4 h-4 ${item.color ?? ""}`} />
+                                            {item.name}
+                                        </span>
+                                    );
+                                })}
                             </div>
                         </motion.div>
                     ))}

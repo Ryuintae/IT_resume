@@ -80,7 +80,7 @@ export const projects: Project[] = [
                 result: "초기 로딩 시간을 54초 → 7초로 단축했습니다.",
             },
         ],
-        techStack: "JavaScript · Cesium · GeoServer · PostgreSQL",
+        techStack: "JavaScript · Cesium · GeoServer · PostgreSQL · jQuery",
         links: [
             {
                 label: "시연 영상",
