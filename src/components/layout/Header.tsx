@@ -17,37 +17,53 @@ const navItems = [
 ];
 
 export default function Header({ isDark, onToggleDark }: HeaderProps) {
-    const [activeId, setActiveId] = useState<string>("hero");
+    const [activeId, setActiveId] = useState("hero");
 
     const handleScroll = useCallback((id: string) => {
         const el = document.getElementById(id);
         if (!el) return;
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        const headerOffset = 80;
+        const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+        window.scrollTo({
+            top,
+            behavior: "smooth",
+        });
     }, []);
 
-    // 현재 화면에 보이는 section 감지 (IntersectionObserver)
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.id;
-                        if (id) setActiveId(id);
-                    }
-                });
-            },
-            {
-                root: null,
-                threshold: 0.4, // 섹션이 40% 이상 보일 때 active
-            }
-        );
+        const updateActiveSection = () => {
+            const viewportCenter = window.innerHeight * 0.38;
 
-        navItems.forEach((item) => {
-            const el = document.getElementById(item.id);
-            if (el) observer.observe(el);
-        });
+            let currentId = navItems[0].id;
+            let minDistance = Number.POSITIVE_INFINITY;
 
-        return () => observer.disconnect();
+            navItems.forEach((item) => {
+                const el = document.getElementById(item.id);
+                if (!el) return;
+
+                const rect = el.getBoundingClientRect();
+                const sectionCenter = rect.top + rect.height / 2;
+                const distance = Math.abs(sectionCenter - viewportCenter);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    currentId = item.id;
+                }
+            });
+
+            setActiveId(currentId);
+        };
+
+        updateActiveSection();
+        window.addEventListener("scroll", updateActiveSection, { passive: true });
+        window.addEventListener("resize", updateActiveSection);
+
+        return () => {
+            window.removeEventListener("scroll", updateActiveSection);
+            window.removeEventListener("resize", updateActiveSection);
+        };
     }, []);
 
     const pillButtonBase =
