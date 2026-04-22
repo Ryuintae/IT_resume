@@ -9,6 +9,7 @@ import {
     SiTailwindcss,
     SiReactrouter,
     SiThreedotjs,
+    SiNextdotjs,
     SiDocker,
 } from "react-icons/si";
 
@@ -137,6 +138,56 @@ const sideProjects: SideProject[] = [
             {
                 label: "회고 글",
                 href: "https://dlsxo.tistory.com/12",
+            },
+        ],
+    },
+    {
+        id: "nba-game-picker",
+        category: "Side Project · 진행중",
+        title: "NBA Game Picker",
+        summary:
+            "NBA 경기 데이터를 기반으로 오늘 가장 볼 만한 경기를 추천하는 스포츠 웹 서비스",
+        thumbnail: "/images/nba_picker_thumb.png",
+        thumbnailAlt: "nba-game-picker HomePage",
+        problem:
+            "NBA 경기가 많은 날에는 어떤 경기를 먼저 봐야 할지 빠르게 판단하기 어렵고, 기존 스포츠 서비스는 일정과 결과 중심이라 선택을 도와주는 구조가 부족했습니다.",
+        action:
+            "단순 일정 나열이 아니라 추천 중심 UX로 방향을 잡고, 홈 화면을 대시보드형으로 설계해 추천 경기, 팀 순위, 득점 리더를 한 화면에서 확인할 수 있도록 구성했습니다.",
+        result:
+            "현재 진행 중인 프로젝트로, 홈 화면 UI 구성과 컴포넌트 분리, mock 데이터 기반 구조화, 다크/라이트 모드 및 PWA 적용까지 완료했으며 이후 경기 목록·상세 페이지와 추천 점수 로직까지 확장할 예정입니다.",
+        techStack: [
+            {
+                name: "Next.js",
+                iconType: "component",
+                icon: SiNextdotjs,
+                iconColor: "text-neutral-900 dark:text-neutral-100",
+            },
+            {
+                name: "TypeScript",
+                iconType: "component",
+                icon: SiTypescript,
+                iconColor: "text-blue-600",
+            },
+            {
+                name: "Zustand",
+                iconType: "image",
+                iconSrc: zustandIcon,
+            },
+            {
+                name: "Tailwind CSS",
+                iconType: "component",
+                icon: SiTailwindcss,
+                iconColor: "text-cyan-500",
+            },
+        ],
+        links: [
+            {
+                label: "서비스 보기",
+                href: "https://nba-game-picker.vercel.app",
+            },
+            {
+                label: "GitHub",
+                href: "https://github.com/Ryuintae/nba-game-picker",
             },
         ],
     },
