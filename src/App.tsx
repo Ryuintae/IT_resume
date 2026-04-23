@@ -9,6 +9,7 @@ import TechStackSection from "./components/sections/TechStackSection.tsx";
 import PatentSection from "./components/sections/PatentSection.tsx";
 import EducationSection from "./components/sections/EducationSection.tsx";
 import SideProjectsSection from "./components/sections/SideProjectsSection";
+import CertificationSection from "./components/sections/CertificationSection.tsx";
 
 function App() {
     const [isDark, setIsDark] = useState(false);
@@ -43,6 +44,7 @@ function App() {
                     <IntroSection />
                     <ProjectsSection />
                     <SideProjectsSection />
+                    <CertificationSection />
                     <PatentSection />
                     <EducationSection />
                 </div>
