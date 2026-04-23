@@ -12,6 +12,7 @@ const navItems = [
     { id: "projects", label: "Projects" },
     { id: "side-projects", label: "Side Projects" },
     { id: "patents", label: "Modules" },
+    { id: "certifications", label: "Certifications" },
     { id: "education", label: "Education" },
     { id: "contact", label: "Contact" },
 ];
@@ -71,7 +72,6 @@ export default function Header({ isDark, onToggleDark }: HeaderProps) {
 
     return (
         <>
-            {/* 상단 헤더 */}
             <header
                 className="
                     fixed top-0 left-0 w-full z-40
@@ -81,7 +81,6 @@ export default function Header({ isDark, onToggleDark }: HeaderProps) {
                 "
             >
                 <div className="max-w-5xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-4">
-                    {/* 왼쪽 로고 */}
                     <button
                         type="button"
                         onClick={() => handleScroll("hero")}
@@ -97,7 +96,6 @@ export default function Header({ isDark, onToggleDark }: HeaderProps) {
                         </div>
                     </button>
 
-                    {/* 가운데 네비게이션 (데스크톱) */}
                     <nav className="hidden md:flex items-center gap-5 text-xs md:text-sm">
                         {navItems.map((item) => (
                             <button
@@ -119,17 +117,16 @@ export default function Header({ isDark, onToggleDark }: HeaderProps) {
                         ))}
                     </nav>
 
-                    {/* 오른쪽: 다크 모드 토글만 */}
                     <div className="flex items-center gap-2">
                         <button
                             type="button"
                             className={`
-        ${pillButtonBase}
-        border-neutral-200 bg-neutral-50 text-neutral-600
-        hover:bg-neutral-100 hover:text-neutral-900
-        dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700
-        whitespace-nowrap
-    `}
+                                ${pillButtonBase}
+                                border-neutral-200 bg-neutral-50 text-neutral-600
+                                hover:bg-neutral-100 hover:text-neutral-900
+                                dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700
+                                whitespace-nowrap
+                            `}
                             onClick={onToggleDark}
                         >
                             {isDark ? "라이트 모드" : "다크 모드"}
@@ -138,7 +135,6 @@ export default function Header({ isDark, onToggleDark }: HeaderProps) {
                 </div>
             </header>
 
-            {/* 오른쪽 Notion 스타일 tick 네비게이션 */}
             <nav
                 className="
                     fixed right-4 top-1/2 -translate-y-1/2
@@ -147,7 +143,6 @@ export default function Header({ isDark, onToggleDark }: HeaderProps) {
                     z-50
                 "
             >
-                {/* 세로 라인 (가이드용) */}
                 <div className="absolute w-px h-full bg-neutral-200/70 dark:bg-neutral-700/70 pointer-events-none" />
 
                 {navItems.map((item) => {
@@ -170,7 +165,6 @@ export default function Header({ isDark, onToggleDark }: HeaderProps) {
                             }
                             `}
                         >
-                            {/* hover 시 나타나는 라벨 */}
                             <span
                                 className="
                                     pointer-events-none
