@@ -74,12 +74,14 @@ export default function HeroSection() {
 
                     {/* 텍스트 영역 */}
                     <div className="space-y-4 text-center md:text-left">
-                        <div className="inline-flex items-center rounded-full border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70 px-3 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-300 shadow-sm backdrop-blur">
+                        <div
+                            className="inline-flex items-center rounded-full border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70 px-3 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-300 shadow-sm backdrop-blur">
                             Frontend · Web · UI
                         </div>
 
-                        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
-                            안녕하세요, 프론트엔드 개발자 류인태 입니다
+                        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50 leading-tight">
+                            <span className="block">안녕하세요. 더 좋은 사용 경험을 만드는</span>
+                            <span className="block">류인태입니다.</span>
                         </h1>
 
                         <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed break-keep text-balance">
@@ -126,9 +128,9 @@ export default function HeroSection() {
             strokeLinejoin="round"
             className="w-4 h-4"
         >
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-          <polyline points="7 10 12 15 17 10" />
-          <line x1="12" y1="15" x2="12" y2="3" />
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
         </svg>
       </span>
                             </a>
