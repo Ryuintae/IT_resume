@@ -12,13 +12,11 @@ import {
     SiMobx,
     SiPostgresql,
     SiCesium,
-    SiJquery
+    SiJquery,
 } from "react-icons/si";
-import { MdSecurity } from "react-icons/md";
-
+import { MdSecurity, MdPublic, MdCalendarToday } from "react-icons/md";
 
 import jspIcon from "../../assets/jsp.svg";
-import { MdPublic } from "react-icons/md"; // 🌍 Earth 아이콘
 
 const containerVariants = {
     hidden: {},
@@ -107,22 +105,28 @@ function getTechMeta(tech: string): TechMeta {
             return { type: "text", label: tech.trim() };
     }
 }
+
 export default function ProjectsSection() {
     const [videoModal, setVideoModal] = useState<VideoModalState>({ open: false });
 
     const closeVideo = () => setVideoModal({ open: false });
 
+    const pillClass =
+        "inline-flex items-center gap-2 rounded-full " +
+        "px-3 py-1 text-[11px] md:text-xs font-medium " +
+        "border border-neutral-200/70 bg-white/60 " +
+        "text-neutral-700 hover:bg-white " +
+        "dark:border-neutral-800/70 dark:bg-neutral-950/40 dark:text-neutral-200";
+
     return (
         <Section id="projects" className="py-16">
             <div className="max-w-5xl mx-auto space-y-10">
-                {/* 헤더 */}
                 <header className="space-y-3">
                     <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
                         업무 경험
                     </h2>
                 </header>
 
-                {/* 카드 리스트 */}
                 <motion.div
                     className="relative grid gap-6 md:gap-7"
                     initial="hidden"
@@ -130,7 +134,6 @@ export default function ProjectsSection() {
                     viewport={{ once: true, amount: 0.2 }}
                     variants={containerVariants}
                 >
-                    {/* 타임라인 라인 */}
                     <div
                         aria-hidden="true"
                         className="hidden md:block absolute left-[0.4375rem] top-0 bottom-0 w-px
@@ -144,7 +147,6 @@ export default function ProjectsSection() {
                             variants={cardVariants}
                             className="relative md:pl-10"
                         >
-                            {/* 타임라인 Dot */}
                             <div
                                 aria-hidden="true"
                                 className="hidden md:flex absolute left-0 top-6 h-3.5 w-3.5 items-center justify-center"
@@ -154,7 +156,6 @@ export default function ProjectsSection() {
                                 </div>
                             </div>
 
-                            {/* 카드 */}
                             <div
                                 className="
                                     rounded-3xl border border-neutral-200/80
@@ -166,17 +167,29 @@ export default function ProjectsSection() {
                                 "
                             >
                                 <div className="p-5 md:p-6 space-y-5">
-                                    {/* 상단 정보 */}
                                     <div className="space-y-2">
-                                        <span
-                                            className="
-                                                inline-flex items-center rounded-full
-                                                bg-neutral-100 px-2.5 py-1 text-xs font-medium text-neutral-600
-                                                dark:bg-neutral-800 dark:text-neutral-300
-                                            "
-                                        >
-                                            {project.client}
-                                        </span>
+                                        <div className="flex flex-wrap items-center gap-2">
+                                            <span
+                                                className="
+                                                    inline-flex items-center rounded-full
+                                                    bg-neutral-100 px-2.5 py-1 text-xs font-medium text-neutral-600
+                                                    dark:bg-neutral-800 dark:text-neutral-300
+                                                "
+                                            >
+                                                {project.client}
+                                            </span>
+
+                                            <span
+                                                className="
+                                                    inline-flex items-center gap-1.5 rounded-full
+                                                    bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700
+                                                    dark:bg-blue-950/40 dark:text-blue-200
+                                                "
+                                            >
+                                                <MdCalendarToday className="h-3.5 w-3.5" />
+                                                {project.period}
+                                            </span>
+                                        </div>
 
                                         <h3 className="text-base md:text-lg font-semibold leading-snug break-keep">
                                             {project.title}
@@ -187,7 +200,6 @@ export default function ProjectsSection() {
                                         </p>
                                     </div>
 
-                                    {/* 문제 / 접근 / 결과 */}
                                     <div className="space-y-3">
                                         {project.points.map((p, idx) => (
                                             <div
@@ -199,7 +211,6 @@ export default function ProjectsSection() {
                                                 "
                                             >
                                                 <div className="grid gap-2.5">
-                                                    {/* 문제 */}
                                                     <div className="grid grid-cols-[auto,1fr] items-start gap-x-2 gap-y-1">
                                                         <span
                                                             className="
@@ -215,7 +226,6 @@ export default function ProjectsSection() {
                                                         </p>
                                                     </div>
 
-                                                    {/* 접근 */}
                                                     <div className="grid grid-cols-[auto,1fr] items-start gap-x-2 gap-y-1">
                                                         <span
                                                             className="
@@ -231,7 +241,6 @@ export default function ProjectsSection() {
                                                         </p>
                                                     </div>
 
-                                                    {/* 결과 */}
                                                     <div className="grid grid-cols-[auto,1fr] items-start gap-x-2 gap-y-1">
                                                         <span
                                                             className="
@@ -251,13 +260,55 @@ export default function ProjectsSection() {
                                         ))}
                                     </div>
 
-                                    {/* 기술 스택 */}
                                     <div className="pt-3 border-t border-neutral-200/70 dark:border-neutral-700/70 flex flex-wrap gap-2">
                                         {project.techStack.split("·").map((raw) => {
                                             const tech = raw.trim();
                                             if (!tech) return null;
 
                                             const meta = getTechMeta(tech);
+
+                                            if (meta.type === "icon") {
+                                                const Icon = meta.icon;
+                                                return (
+                                                    <span
+                                                        key={tech}
+                                                        className="
+                                                            inline-flex items-center gap-1.5
+                                                            rounded-full px-3 py-1 text-[11px] md:text-xs font-medium
+                                                            bg-neutral-50/80 text-neutral-700
+                                                            border border-blue-200 shadow-sm
+                                                            dark:bg-neutral-900/70 dark:text-neutral-200 dark:border-blue-900/40
+                                                            whitespace-nowrap
+                                                        "
+                                                    >
+                                                        <Icon className={`h-4 w-4 ${meta.color}`} />
+                                                        {meta.label}
+                                                    </span>
+                                                );
+                                            }
+
+                                            if (meta.type === "image") {
+                                                return (
+                                                    <span
+                                                        key={tech}
+                                                        className="
+                                                            inline-flex items-center gap-1.5
+                                                            rounded-full px-3 py-1 text-[11px] md:text-xs font-medium
+                                                            bg-neutral-50/80 text-neutral-700
+                                                            border border-blue-200 shadow-sm
+                                                            dark:bg-neutral-900/70 dark:text-neutral-200 dark:border-blue-900/40
+                                                            whitespace-nowrap
+                                                        "
+                                                    >
+                                                        <img
+                                                            src={meta.src}
+                                                            alt={meta.label}
+                                                            className="h-4 w-4 object-contain"
+                                                        />
+                                                        {meta.label}
+                                                    </span>
+                                                );
+                                            }
 
                                             return (
                                                 <span
@@ -271,40 +322,16 @@ export default function ProjectsSection() {
                                                         whitespace-nowrap
                                                     "
                                                 >
-                                                    {meta.type === "icon" ? (
-                                                        <>
-                                                            <meta.icon className={`h-4 w-4 ${meta.color}`} />
-                                                            {meta.label}
-                                                        </>
-                                                    ) : meta.type === "image" ? (
-                                                        <>
-                                                            <img
-                                                                src={meta.src}
-                                                                alt={meta.label}
-                                                                className="h-4 w-4 object-contain"
-                                                            />
-                                                            {meta.label}
-                                                        </>
-                                                    ) : (
-                                                        meta.label
-                                                    )}
+                                                    {meta.label}
                                                 </span>
                                             );
                                         })}
                                     </div>
 
-                                    {/* Links */}
-                                    {project.links?.length ? (
+                                    {project.links && project.links.length > 0 ? (
                                         <div className="pt-3 flex flex-wrap gap-2">
                                             {project.links.map((l) => {
                                                 const isVideo = (l.kind ?? "url") === "video";
-
-                                                const pillClass =
-                                                    "inline-flex items-center gap-2 rounded-full " +
-                                                    "px-3 py-1 text-[11px] md:text-xs font-medium " +
-                                                    "border border-neutral-200/70 bg-white/60 " +
-                                                    "text-neutral-700 hover:bg-white " +
-                                                    "dark:border-neutral-800/70 dark:bg-neutral-950/40 dark:text-neutral-200";
 
                                                 if (isVideo) {
                                                     return (
@@ -330,7 +357,7 @@ export default function ProjectsSection() {
 
                                                 return (
                                                     <a
-                                                        key={l.href}
+                                                        key={l.href ?? `${project.id}-${l.label}`}
                                                         href={l.href}
                                                         target="_blank"
                                                         rel="noreferrer"
@@ -350,7 +377,6 @@ export default function ProjectsSection() {
                 </motion.div>
             </div>
 
-            {/* Video Modal */}
             {videoModal.open ? (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -358,7 +384,6 @@ export default function ProjectsSection() {
                     aria-modal="true"
                     aria-label="시연 영상"
                 >
-                    {/* Backdrop */}
                     <button
                         type="button"
                         aria-label="닫기"
@@ -366,40 +391,36 @@ export default function ProjectsSection() {
                         className="absolute inset-0 bg-black/40 backdrop-blur-sm"
                     />
 
-                    {/* Panel */}
                     <div
                         className="
-                         relative w-[min(980px,94vw)] overflow-hidden rounded-3xl
-                         border border-neutral-200/80 bg-white text-neutral-900
-                         shadow-[0_24px_90px_rgba(15,23,42,0.18)]
-                         dark:border-neutral-800/80 dark:bg-neutral-950 dark:text-neutral-100
-                     "
+                            relative w-[min(980px,94vw)] overflow-hidden rounded-3xl
+                            border border-neutral-200/80 bg-white text-neutral-900
+                            shadow-[0_24px_90px_rgba(15,23,42,0.18)]
+                            dark:border-neutral-800/80 dark:bg-neutral-950 dark:text-neutral-100
+                        "
                     >
-                        {/* Top accent */}
                         <div
                             aria-hidden="true"
                             className="
-                                    absolute inset-x-0 top-0 h-20
-                                    bg-gradient-to-br from-blue-50 via-white to-indigo-50
-                                    dark:from-blue-950/25 dark:via-neutral-950 dark:to-indigo-950/25
+                                absolute inset-x-0 top-0 h-20
+                                bg-gradient-to-br from-blue-50 via-white to-indigo-50
+                                dark:from-blue-950/25 dark:via-neutral-950 dark:to-indigo-950/25
                             "
                         />
 
-                        {/* Header (2 rows) */}
                         <div
                             className="
-                             relative px-5 py-4
-                             border-b border-neutral-200/70 dark:border-neutral-800/70
-                        "
+                                relative px-5 py-4
+                                border-b border-neutral-200/70 dark:border-neutral-800/70
+                            "
                         >
-                            {/* 1행: 제목(가운데) + 닫기(오른쪽) */}
                             <div className="relative flex items-center justify-end">
                                 <p
                                     className="
-                                    absolute left-1/2 -translate-x-1/2
-                                    text-sm md:text-base font-semibold truncate
-                                    max-w-[70%]
-                                 "
+                                        absolute left-1/2 -translate-x-1/2
+                                        text-sm md:text-base font-semibold truncate
+                                        max-w-[70%]
+                                    "
                                 >
                                     {videoModal.title ?? "시연 영상"}
                                 </p>
@@ -420,7 +441,6 @@ export default function ProjectsSection() {
                                 </button>
                             </div>
 
-                            {/* 2행: 설명 + 뱃지 */}
                             <div className="mt-2 flex flex-wrap items-center gap-2">
                                 <p className="text-xs text-neutral-600 dark:text-neutral-400">
                                     실사용 흐름을 그대로 녹화한 데모
@@ -429,11 +449,11 @@ export default function ProjectsSection() {
                                 {videoModal.isPublic ? (
                                     <span
                                         className="
-                                        inline-flex items-center rounded-full
-                                        bg-amber-50 px-2.5 py-1 text-[11px] font-semibold text-amber-800
-                                        border border-amber-200/60
-                                        dark:bg-amber-950/30 dark:text-amber-200 dark:border-amber-900/30
-                                    "
+                                            inline-flex items-center rounded-full
+                                            bg-amber-50 px-2.5 py-1 text-[11px] font-semibold text-amber-800
+                                            border border-amber-200/60
+                                            dark:bg-amber-950/30 dark:text-amber-200 dark:border-amber-900/30
+                                        "
                                     >
                                         공공기관 보수적 UI 톤 적용
                                     </span>
@@ -441,17 +461,15 @@ export default function ProjectsSection() {
                             </div>
                         </div>
 
-                        {/* Body */}
                         <div className="relative p-4 md:p-5 bg-white dark:bg-neutral-950">
                             <div
                                 className="
                                     overflow-hidden rounded-2xl
                                     border border-neutral-200/70 bg-neutral-100
                                     dark:border-neutral-800/70 dark:bg-black
-                            "
+                                "
                             >
                                 <video
-                                    key={videoModal.src}
                                     controls
                                     autoPlay
                                     playsInline
