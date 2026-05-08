@@ -5,6 +5,7 @@ export const projects: Project[] = [
         id: "security-starter",
         title: "사내 공통 로그인 템플릿 개발 (Security Starter)",
         client: "JBT (사내 공통 템플릿)",
+        period: "2026.02 ~ 2026.04",
         summary: "페이지 이동 없이 인증 흐름을 처리하는 공통 로그인/회원 UI 템플릿",
         description:
             "Spring Security 기반 프로젝트에서 재사용 가능한 인증 템플릿을 만들기 위해, 단일 페이지에서 로그인/회원가입/비밀번호 변경/아이디 찾기를 모달로 처리하는 UI와 API 연동 구조를 설계·구현했습니다.",
@@ -26,14 +27,13 @@ export const projects: Project[] = [
             },
         ],
         techStack: "JavaScript · JSP · Spring · Spring Security · RSA",
-        links: [
-            { label: "회고 글", href: "https://dlsxo.tistory.com/4" },
-        ],
+        links: [{ label: "회고 글", href: "https://dlsxo.tistory.com/4" }],
     },
     {
         id: "hyundai-ev-map",
         title: "차세대 공간정보 관리 지도 웹 애플리케이션",
         client: "현대오토에버(외주)",
+        period: "2023.10 ~ 2024.12",
         summary: "지도 기반 검색·조사 관리 업무 UI",
         description:
             "주소·시설물 정보를 지도 중심으로 검색하고 조사 관리 업무를 수행하는 웹 애플리케이션의 주요 화면을 구현했습니다.",
@@ -60,6 +60,7 @@ export const projects: Project[] = [
         id: "flood-alert",
         title: "도시침수 위험 알림 시스템",
         client: "ICT 전북 TP",
+        period: "2025.01 ~ 2026.01",
         summary: "침수 분석·예측 결과를 지도/3D로 확인하는 분석 UI",
         description:
             "군산시 문화동을 대상으로 침수 분석·예측 결과를 지도와 3D 화면에서 확인하고, 조건에 따라 알림을 확인하는 UI를 구현했습니다.",
