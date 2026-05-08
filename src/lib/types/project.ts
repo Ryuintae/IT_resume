@@ -1,26 +1,25 @@
-export interface ProjectPoint {
+export type ProjectPoint = {
     problem: string;
     action: string;
     result: string;
-}
+};
 
-export interface ProjectLink {
+export type ProjectLink = {
     label: string;
-    // 일반 링크일 때
     href?: string;
-    // 모달 트리거일 때
     kind?: "url" | "video";
     videoSrc?: string;
     videoPoster?: string;
-}
+};
 
-export interface Project {
+export type Project = {
     id: string;
     title: string;
     client: string;
+    period: string; // 추가
     summary: string;
-    description?: string;
+    description: string;
     points: ProjectPoint[];
     techStack: string;
     links?: ProjectLink[];
-}
+};
