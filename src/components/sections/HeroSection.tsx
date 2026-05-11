@@ -93,13 +93,53 @@ export default function HeroSection() {
                             또한 DB 설계와 Spring Security 기반 인증 기능을 직접 구현한 경험이 있어,
                             프론트엔드와 백엔드의 경계를 이해하고 자연스럽게 협업할 수 있습니다.
                         </p>
-                        {/* 이력서 다운로드 BTN */}
-                        <div className="mt-28 pt-2 flex justify-center md:justify-start">
+                        {/* 다운로드 버튼 */}
+                        <div className="mt-28 pt-2 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
                             <a
                                 href="/files/류인태_이력서.pdf"
                                 download
                                 className="
-        inline-flex items-center gap-2
+            inline-flex items-center justify-center gap-2
+            rounded-xl
+            px-5 py-2.5
+            border border-neutral-200/70 dark:border-neutral-800/70
+            bg-white/70 dark:bg-neutral-900/60
+            text-sm font-semibold text-neutral-900 dark:text-neutral-50
+            shadow-sm
+            hover:shadow-md
+            hover:bg-white/90 dark:hover:bg-neutral-900/80
+            active:translate-y-[1px]
+            transition
+            backdrop-blur
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/50 dark:focus-visible:ring-neutral-600/60
+        "
+                            >
+                                <span>이력서 다운로드</span>
+                                <span className="opacity-70">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4"
+            >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+        </span>
+                            </a>
+
+                            <a
+                                href="/files/류인태_경력기술서.pdf"
+                                download
+                                className="
+        inline-flex items-center justify-center gap-2
         rounded-xl
         px-5 py-2.5
         border border-neutral-200/70 dark:border-neutral-800/70
@@ -112,9 +152,9 @@ export default function HeroSection() {
         transition
         backdrop-blur
         focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/50 dark:focus-visible:ring-neutral-600/60
-      "
+    "
                             >
-                                <span>이력서 다운로드</span>
+                                <span>경력 기술서 다운로드</span>
                                 <span className="opacity-70">
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -128,11 +168,11 @@ export default function HeroSection() {
             strokeLinejoin="round"
             className="w-4 h-4"
         >
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-          <polyline points="7 10 12 15 17 10"/>
-          <line x1="12" y1="15" x2="12" y2="3"/>
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
         </svg>
-      </span>
+    </span>
                             </a>
                         </div>
                     </div>
